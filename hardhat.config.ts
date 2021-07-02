@@ -30,7 +30,7 @@ if (PK) {
   };
 }
 
-if (["mainnet", "rinkeby", "kovan", "goerli", "ropsten", "mumbai", "polygon"].includes(argv.network) && INFURA_KEY === undefined) {
+if (["mainnet", "rinkeby", "kovan", "goerli", "ropsten", "mumbai", "polygon", "huobi", "bsc"].includes(argv.network) && INFURA_KEY === undefined) {
   throw new Error(
     `Could not find Infura key in env, unable to connect to network ${argv.network}`,
   );
@@ -102,6 +102,14 @@ const userConfig: HardhatUserConfig = {
     volta: {
       ...sharedNetworkConfig,
       url: `https://volta-rpc.energyweb.org`,
+    },
+    huobi: {
+      ...sharedNetworkConfig,
+      url: `https://http-mainnet-node.huobichain.com`,
+    }, 
+    bsc: {
+      ...sharedNetworkConfig,
+      url: `https://bsc-dataseed.binance.org/`,
     },
   },
   namedAccounts: {
